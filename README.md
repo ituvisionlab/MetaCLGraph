@@ -39,7 +39,7 @@
 
  ## Pipeline Usages
  
- We provide pipelines for training, validating, and evaluating models with node classification tasks under class incremental scenario. In the following, we provide several examples to demonstrate the usage of the pipelines.
+ The pipelines for training, validating, and evaluating models are provided with node classification tasks under class incremental scenario. In the following, we provide several examples to demonstrate the usage of the pipelines.
  
  For the experiments, the starting point is the ```train.py``` file, and the different configurations (e.g. the baseline, backbone, etc.), whether to include inter task edges, etc.) are assigned through the keyword arguments of the Argparse module. For example, the following code is used in order to run an experiment with Arxiv-CL dataset with class incremental learning setting while there is not any inter task edges.
  
@@ -97,7 +97,7 @@ When running the code in Windows system, the following error **OSError: [Errno 2
 
 ### Modifying the train-validation-test Splitting
 
-The splitting can be simply specified via the arguments when running the experiments. In our implemented pipeline, the corresponding arguments are the validation and testing ratios. For example,
+The splitting can be simply specified via the arguments when running the experiments. In the implemented pipeline, the corresponding arguments are the validation and testing ratios. For example,
 
 ```
 python train.py --dataset Arxiv-CL \
@@ -115,4 +115,4 @@ The example above set the data ratio for validation and testing as 0.4 and 0.4, 
  ## Acknowledgement
  The construction of our repository also benefits from existing repositories on both continual learning and continual graph learning. The pipeline and the benchmark models were adapted from [CGLB](https://github.com/QueuQ/CGLB). The construction of the datasets also benefits from several existing databases and libraries. The construction of the datasets uses the datasets and tools from OGB and DGL. 
 
-We sincerely thank the authors of these works for sharing their code and helping developing the community.
+We sincerely thank the authors of CGLB for sharing their code and helping developing the community.
