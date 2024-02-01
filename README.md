@@ -2,6 +2,15 @@
 
  This is the official repository of Meta Continual Learning on Graphs with Experience Replay.
 
+  ```
+ @article{unal2023meta,
+  title={Meta Continual Learning on Graphs with Experience Replay},
+  author={Unal, Altay and Akg{\"u}l, Abdullah and Kandemir, Melih and Unal, Gozde},
+  journal={Transactions on Machine Learning Research},
+  year={2023}
+ }
+ ```
+
  ## Get Started
  
  This repository contains our MetaCLGraph implementation with the baseline models for running on GPU devices. To running in Windows system, please specify the argument ```--replace_illegal_char``` as ```True``` to avoid illegal filename characters (details are in <a href="#Pipeline-Usages">Pipeline Usages</a>). To run the code, the following packages are required to be installed:
