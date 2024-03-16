@@ -199,7 +199,22 @@ class GCNLayer(nn.Module):
         e_soft = edge_softmax(block, e)
         elist.append(e_soft)
         return h, elist
+        
+    def maml(self, graph, feat, params):
+        elist = []
+        graph = graph.local_var().to('cuda:{}'.format(feat.get_device()))
+        h = F.linear(feat, params)
+        graph.ndata['h'] = h
+        graph.update_all(gcn_msg, gcn_reduce)
+        h = graph.ndata['h']
 
+        graph.apply_edges(lambda edges: {'e': th.sum((th.mul(edges.src['h'], th.tanh(edges.dst['h']))), 1)})
+        e = F.leaky_relu(graph.edata.pop('e'))
+
+        e_soft = edge_softmax(graph, e)
+        elist.append(e_soft)
+        return h, elist
+        
     def reset_parameters(self):
         """Reinitialize learnable parameters."""
         gain = nn.init.calculate_gain('leaky_relu', 0.2)
